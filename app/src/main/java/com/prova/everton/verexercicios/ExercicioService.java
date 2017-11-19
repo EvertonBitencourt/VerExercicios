@@ -93,6 +93,7 @@ public class ExercicioService extends Service {
                 if(msg != null) {
                     if (msg.getPergunta() != null) {
                         Bundle bundle = new Bundle();
+                        bundle.putInt("ID:", msg.getIdExercicio());
                         bundle.putString("Pergunta", msg.getPergunta());
                         bundle.putString("Resposta", msg.getResposta());
                         Context contexto = getApplicationContext();

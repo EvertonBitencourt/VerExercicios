@@ -17,6 +17,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
 
     private ExercicioResolvido exercicioResolvido;
+
     TextView ta;
     TextView tm;
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         ta = (TextView) findViewById(R.id.pergunta);
         tm = (TextView) findViewById(R.id.resposta);
+
 
         exercicioResolvido = new ExercicioResolvido();
 
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     }.getType());
 
             if (msg.getPergunta() != null) {
+                exercicioResolvido.setIdExercicio(msg.getIdExercicio());
                 exercicioResolvido.setPergunta(msg.getPergunta());
                 exercicioResolvido.setResposta(msg.getResposta());
                 ta.setText(exercicioResolvido.getPergunta());
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 exercicioResolvido.setPergunta("Não perguntas ainda");
                 exercicioResolvido.setResposta("");
-                Log.d("AUTOR", "NULL");
+                Log.d("Pergunta", "NULL");
                 ta.setText(exercicioResolvido.getPergunta());
                 tm.setText(exercicioResolvido.getResposta());
             }
