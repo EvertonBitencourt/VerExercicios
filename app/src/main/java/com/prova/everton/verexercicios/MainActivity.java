@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void vaiWebService() {
 
-        String url = "https://approbabilidade.herokuapp.com/exercicioscompletos.php";
+        String url = "https://approbabilidade.herokuapp.com/exerciciosresolvidos.php";
         new ListService().execute(url);
     }
 
@@ -72,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             Gson parser = new Gson();
             ExercicioResolvido msg;
+
+            List<ExercicioResolvido> exercicioResolvidos;
+
+            exercicioResolvidos = parser.fromJson(result,
+                    new TypeToken<List<ExercicioResolvido>>(){}.getType());
+            geraLista(exercicioResolvidos);
+
 
             msg = parser.fromJson(result,
                     new TypeToken<ExercicioResolvido>() {
